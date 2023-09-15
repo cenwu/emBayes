@@ -1,8 +1,8 @@
 Package: emBayes
 Type: Package
 Title: Robust Bayesian Variable Selection via Expectation-Maximization
-Version: 0.1.1
-Date: 2023-06-06
+Version: 0.1.2
+Date: 2023-08-06
 Authors@R: c( person("Yuwen", "Liu", role = c("aut", "cre") , email = "yuwen@ksu.edu"),
               person("Cen", "Wu", role = "aut"))
 Maintainer: Yuwen Liu <yuwen@ksu.edu>

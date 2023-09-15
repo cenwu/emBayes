@@ -24,8 +24,9 @@ Variable selection methods have been extensively developed for analyzing high-di
 
 ## Example
 
-     data(data)
-     ##load the clinical factors, genetic factors, response and quantile data
+     library(emBayes)
+     data(genes)
+     ##load the clinical factors, genetic factors, response variable and quantile data
      clin=data$clin
      X=data$X
      y=data$y
@@ -53,5 +54,5 @@ Variable selection methods have been extensively developed for analyzing high-di
 
 This package provides implementation for methods proposed in
 
-   - Liu, Y., Ren, J., Ma, S., Wang, W. and Wu, C. (2023+). The Spike-and-Slab Quantile LASSO.(submitted)
+   - Liu, Y., Ren, J., Ma, S., and Wu, C. (2023+). The Spike-and-Slab Quantile LASSO for robust variable selection in cancer genomics studies.(submitted)
 
