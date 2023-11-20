@@ -1,8 +1,8 @@
 Package: emBayes
 Type: Package
 Title: Robust Bayesian Variable Selection via Expectation-Maximization
-Version: 0.1.2
-Date: 2023-08-06
+Version: 0.1.4
+Date: 2023-11-02
 Authors@R: c( person("Yuwen", "Liu", role = c("aut", "cre") , email = "yuwen@ksu.edu"),
               person("Cen", "Wu", role = "aut"))
 Maintainer: Yuwen Liu <yuwen@ksu.edu>
@@ -14,4 +14,9 @@ LazyData: true
 Imports: Rcpp, glmnet
 LinkingTo: Rcpp, RcppArmadillo
 RoxygenNote: 7.2.3
-
+NeedsCompilation: yes
+Packaged: 2023-11-07 04:39:57 UTC; 26057
+Author: Yuwen Liu [aut, cre],
+  Cen Wu [aut]
+Repository: CRAN
+Date/Publication: 2023-11-07 05:10:02 UTC

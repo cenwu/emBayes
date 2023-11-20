@@ -46,7 +46,7 @@ The current version of emBayes supports two types of methods: "ssLASSO" and "ssQ
 \item \strong{ssLASSO:} spike-and-slab LASSO fits a Bayesian linear regression through the EM algorithm.  
 \item \strong{ssQLASSO:} spike-and-slab quantile LASSO fits a Bayesian quantile regression (based on asymmetric Laplace distribution) through the EM algorithm.
 }
-Users can choose the desired method by setting {func="ssLASSO" or "ssQLASSO"}.
+Users can choose the desired method by setting func="ssLASSO" or "ssQLASSO".
 }
 \examples{
 data(data)

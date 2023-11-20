@@ -51,7 +51,7 @@ NULL
 #' {\emph{Journal of the American Statistical Association}, 109(506), 828-846} \doi{10.1080/01621459.2013.869223}
 #' 
 #' Li, Q., Lin, N., and Xi, R. (2010). Bayesian regularized quantile regression.
-#' {\emph{Bayesian Analysis}, 5(3), 533-556} \doi{0.1214/10-BA521}
+#' {\emph{Bayesian Analysis}, 5(3), 533-556} \doi{10.1214/10-BA521}
 #' 
 #' George, E. I., and McCulloch, R. E. (1993). Variable selection via Gibbs sampling. 
 #' {\emph{Journal of the American Statistical Association}, 88(423), 881-889} \doi{10.1080/01621459.1993.10476353}

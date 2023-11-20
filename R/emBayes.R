@@ -22,7 +22,7 @@ NULL
 #' \item \strong{ssLASSO:} spike-and-slab LASSO fits a Bayesian linear regression through the EM algorithm.  
 #' \item \strong{ssQLASSO:} spike-and-slab quantile LASSO fits a Bayesian quantile regression (based on asymmetric Laplace distribution) through the EM algorithm.
 #' }
-#' Users can choose the desired method by setting {func="ssLASSO" or "ssQLASSO"}.
+#' Users can choose the desired method by setting func="ssLASSO" or "ssQLASSO".
 #' @return A list with components:
 #' \item{alpha}{a vector containing the estimated intercept and clinical coefficients.}
 #' \item{intercept}{value of the estimated intercept.}
@@ -77,8 +77,14 @@ emBayes <- function(y,clin=NULL,X,quant,s0,s1,func,error=0.01,maxiter=200){
   beta <- coef(fit)[-1]
   
   y0 <- y-X%*%beta
-  regalpha <- lm(y0 ~ clin)
-  alpha <- as.numeric(coefficients(regalpha))
+  if(is.null(clin) == 0){
+    regalpha <- lm(y0 ~ clin)
+    alpha <- as.numeric(coefficients(regalpha))
+  }
+  else{
+    alpha <- mean(y0)
+  }
+  
   
   if(func=="ssQLASSO"){
     ep22 <- (2/(quant*(1-quant)))
@@ -96,7 +102,7 @@ emBayes <- function(y,clin=NULL,X,quant,s0,s1,func,error=0.01,maxiter=200){
     iter <- 0
     diff <- 1
     
-    while( diff > error){
+    while( diff > error & iter < maxiter){
       iter  <- iter+1
       EM <- EMQR(y,X,C,n,p,q,quant,alpha,beta,sigma,theta,s0,s1,Pgamma,invS,ep1,ep22,vn,vp)
       alpha <- EM$alpha
@@ -127,7 +133,7 @@ emBayes <- function(y,clin=NULL,X,quant,s0,s1,func,error=0.01,maxiter=200){
     iter <- 0
     diff <- 1
     
-    while( diff > error){
+    while( diff > error & iter < maxiter){
       iter  <- iter+1
       EM <- EMR(y,X,C,n,p,q,alpha,beta,sigma2,theta,Pgamma,invS)
       alpha <- EM$alpha
