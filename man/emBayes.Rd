@@ -4,7 +4,20 @@
 \alias{emBayes}
 \title{fit a model with given tuning parameters}
 \usage{
-emBayes(y, clin = NULL, X, quant, s0, s1, func, error = 0.01, maxiter = 200)
+emBayes(
+  y,
+  clin = NULL,
+  X,
+  W = NULL,
+  nt = NULL,
+  group = NULL,
+  quant,
+  s0,
+  s1,
+  func,
+  error = 0.01,
+  maxiter = 100
+)
 }
 \arguments{
 \item{y}{a vector of response variable.}
@@ -13,13 +26,19 @@ emBayes(y, clin = NULL, X, quant, s0, s1, func, error = 0.01, maxiter = 200)
 
 \item{X}{a matrix of genetic factors.}
 
+\item{W}{a matrix of random factors.}
+
+\item{nt}{a vector of number of repeated measurements for each subject. They can be same or different.}
+
+\item{group}{a vector of group sizes. They can be same or different.}
+
 \item{quant}{value of quantile.}
 
 \item{s0}{value of the spike scale \eqn{s_{0}}.}
 
 \item{s1}{value of the slab scale \eqn{s_{1}}.}
 
-\item{func}{methods to perform variable selection. Two choices are available: "ssLASSO" and "ssQLASSO".}
+\item{func}{methods to perform variable selection. Four choices are available. For non longitudinal analysis: "ssLASSO" and "ssQLASSO". For longitudinal varying-coefficient analysis: "ssVCM" and "ssQVCM".}
 
 \item{error}{cutoff value for determining convergence. The algorithm reaches convergence if the difference in the expected log-likelihood of two iterations is less than the value of error. The default value is 0.01.}
 
@@ -30,6 +49,7 @@ A list with components:
 \item{alpha}{a vector containing the estimated intercept and clinical coefficients.}
 \item{intercept}{value of the estimated intercept.}
 \item{clin.coe}{a vector of estimated clinical coefficients.}
+\item{r}{a vector of estimated ranodm effect coefficients.}
 \item{beta}{a vector of estimated beta coefficients.}
 \item{sigma}{value of estimated asymmetric Laplace distribution scale parameter \eqn{\sigma}.}
 \item{theta}{value of estimated probability parameter \eqn{\theta}.}
@@ -37,16 +57,18 @@ A list with components:
 \item{ll}{a vector of expectation of likelihood at each iteration.}
 }
 \description{
-This function performs penalized variable selection based on spike-and-slab quantile LASSO (ssQLASSO) or spike-and-slab LASSO (ssLASSO).
+This function performs penalized variable selection based on spike-and-slab quantile LASSO (ssQLASSO), spike-and-slab LASSO (ssLASSO), spike-and-slab quantile group LASSO varying coefficient mixed model (ssQVCM) and spike-and-slab group LASSO varying coefficient mixed model (ssVCM).
 Typical usage is to first obtain the optimal spike scale and slab scale using cross-validation, then specify them in the 'emBayes' function.
 }
 \details{
-The current version of emBayes supports two types of methods: "ssLASSO" and "ssQLASSO".
+The current version of emBayes supports four types of methods: "ssLASSO", "ssQLASSO", "ssVCM" and "ssQVCM".
 \itemize{
 \item \strong{ssLASSO:} spike-and-slab LASSO fits a Bayesian linear regression through the EM algorithm.  
 \item \strong{ssQLASSO:} spike-and-slab quantile LASSO fits a Bayesian quantile regression (based on asymmetric Laplace distribution) through the EM algorithm.
+\item \strong{ssVCM:} spike-and-slab group LASSO varying coefficient mixed model fits a Bayesian linear mixed model through the EM algorithm.  
+\item \strong{ssQVCM:} spike-and-slab quantile group LASSO varying coefficient mixed model fits a Bayesian quantile mixed model through the EM algorithm.
 }
-Users can choose the desired method by setting func="ssLASSO" or "ssQLASSO".
+Users can choose the desired method by setting func="ssLASSO", "ssQLASSO", "ssVCM" or "ssQVCM".
 }
 \examples{
 data(data)
@@ -61,12 +83,14 @@ t0 <- seq(0.01,0.015,length.out=2)
 t1 <- seq(0.1,0.5,length.out=2)
 
 ##perform cross-validation and obtain tuning parameters based on check loss
-CV <- cv.emBayes(y,clin,X,quant,t0,t1,k=5,func="ssQLASSO",error=0.01,maxiter=200)
+CV <- cv.emBayes(y,clin,X,W=NULL,nt=NULL,group=NULL,quant,t0,t1,k=5,
+func="ssQLASSO",error=0.01,maxiter=200)
 s0 <- CV$CL.s0
 s1 <- CV$CL.s1
 
 ##perform BQLSS under optimal tuning and calculate value of TP and FP for selecting beta 
-EM <- emBayes(y,clin,X,quant,s0,s1,func="ssQLASSO",error=0.01,maxiter=200)
+EM <- emBayes(y,clin,X,W=NULL,nt=NULL,group=NULL,quant,s0,s1,func="ssQLASSO",
+error=0.01,maxiter=200)
 fit <- EM$beta
 coef <- data$coef
 tp <- sum(fit[coef!=0]!=0)

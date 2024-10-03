@@ -8,13 +8,16 @@ cv.emBayes(
   y,
   clin = NULL,
   X,
+  W = NULL,
+  nt = NULL,
+  group = NULL,
   quant,
   t0,
   t1,
   k,
   func,
   error = 0.01,
-  maxiter = 200
+  maxiter = 100
 )
 }
 \arguments{
@@ -24,6 +27,12 @@ cv.emBayes(
 
 \item{X}{a matrix of genetic factors.}
 
+\item{W}{a matrix of random factors.}
+
+\item{nt}{a vector of number of repeated measurements for each subject. They can be same or different.}
+
+\item{group}{a vector of group sizes. They can be same or different.}
+
 \item{quant}{value of quantile.}
 
 \item{t0}{a user-supplied sequence of the spike scale \eqn{s_{0}}.}
@@ -32,7 +41,7 @@ cv.emBayes(
 
 \item{k}{number of folds for cross-validation.}
 
-\item{func}{methods to perform variable selection. Two choices are available: "ssLASSO" and "ssQLASSO".}
+\item{func}{methods to perform variable selection. Four choices are available. For non longitudinal analysis: "ssLASSO" and "ssQLASSO". For longitudinal varying-coefficient analysis: "ssVCM" and "ssQVCM".}
 
 \item{error}{cutoff value for determining convergence. The algorithm reaches convergence if the difference in the expected log-likelihood of two iterations is less than the value of error. The default value is 0.01.}
 
@@ -62,5 +71,5 @@ Corresponding error matrices \eqn{CL.CV}, \eqn{SL.CV} and \eqn{SIC.CV} can also 
 
 Schwarz Information Criterion has the following form:
 \deqn{SIC=\log\sum_{i=1}^nL(y_i-\hat{y_i})+\frac{\log n}{2n}edf}
-where \eqn{L(\cdot)} is the check loss and \eqn{edf} is the number of close to zero residuals \eqn{(\leq 0.001)}.
+where \eqn{L(\cdot)} is the check loss and \eqn{edf} is the number of close to zero residuals \eqn{(\leq 0.001)}. For non-robust method “ssLASSO”, one should use least squares loss for tuning selection. For robust method “ssQLASSO”, one can either use quantile check loss or SIC for tuning selection. We suggest using SIC, since it has been extensively utilized for tuning selection in high-dimensional quantile regression, as documented in numerous literature sources.
 }

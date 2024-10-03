@@ -9,12 +9,28 @@ EMQR <- function(y, X, C, n, p, q, quant, alpha, beta, sigma, theta, s0, s1, Pga
     .Call(`_emBayes_EMQR`, y, X, C, n, p, q, quant, alpha, beta, sigma, theta, s0, s1, Pgamma, invS, ep1, ep22, vn, vp)
 }
 
+EMVCR <- function(y, X, C, W, r, rs, n, m, nt, ns, p, q, alpha, beta, g, gn, phi2, sigma2, theta, Pgamma, S) {
+    .Call(`_emBayes_EMVCR`, y, X, C, W, r, rs, n, m, nt, ns, p, q, alpha, beta, g, gn, phi2, sigma2, theta, Pgamma, S)
+}
+
+EMVCQR <- function(y, X, C, W, r, rs, n, m, nt, ns, p, q, quant, alpha, beta, g, gn, phi2, sigma, theta, Pgamma, S, ep1, ep22, vn, vp) {
+    .Call(`_emBayes_EMVCQR`, y, X, C, W, r, rs, n, m, nt, ns, p, q, quant, alpha, beta, g, gn, phi2, sigma, theta, Pgamma, S, ep1, ep22, vn, vp)
+}
+
 logR <- function(y, X, C, alpha, beta, sigma2, theta, s0, s1) {
     .Call(`_emBayes_logR`, y, X, C, alpha, beta, sigma2, theta, s0, s1)
 }
 
 logQR <- function(y, X, C, alpha, beta, sigma, theta, s0, s1, ep1, ep22) {
     .Call(`_emBayes_logQR`, y, X, C, alpha, beta, sigma, theta, s0, s1, ep1, ep22)
+}
+
+logVCR <- function(y, X, C, W, r, rs, n, m, ns, alpha, beta, g, gn, phi2, sigma2, theta, s0, s1) {
+    .Call(`_emBayes_logVCR`, y, X, C, W, r, rs, n, m, ns, alpha, beta, g, gn, phi2, sigma2, theta, s0, s1)
+}
+
+logVCQR <- function(y, X, C, W, r, rs, n, m, ns, alpha, beta, g, gn, phi2, sigma, theta, s0, s1, ep1, ep22) {
+    .Call(`_emBayes_logVCQR`, y, X, C, W, r, rs, n, m, ns, alpha, beta, g, gn, phi2, sigma, theta, s0, s1, ep1, ep22)
 }
 
 Soft <- function(z, lambda) {

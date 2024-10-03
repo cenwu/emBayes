@@ -62,6 +62,73 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// EMVCR
+Rcpp::List EMVCR(arma::vec& y, arma::mat& X, arma::mat& C, arma::mat& W, arma::mat& r, arma::mat& rs, int n, int m, arma::vec nt, int ns, int p, int q, arma::vec alpha, arma::vec beta, arma::vec g, double gn, double phi2, double sigma2, double theta, arma::vec Pgamma, arma::vec S);
+RcppExport SEXP _emBayes_EMVCR(SEXP ySEXP, SEXP XSEXP, SEXP CSEXP, SEXP WSEXP, SEXP rSEXP, SEXP rsSEXP, SEXP nSEXP, SEXP mSEXP, SEXP ntSEXP, SEXP nsSEXP, SEXP pSEXP, SEXP qSEXP, SEXP alphaSEXP, SEXP betaSEXP, SEXP gSEXP, SEXP gnSEXP, SEXP phi2SEXP, SEXP sigma2SEXP, SEXP thetaSEXP, SEXP PgammaSEXP, SEXP SSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec& >::type y(ySEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type C(CSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type W(WSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type r(rSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type rs(rsSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< int >::type m(mSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type nt(ntSEXP);
+    Rcpp::traits::input_parameter< int >::type ns(nsSEXP);
+    Rcpp::traits::input_parameter< int >::type p(pSEXP);
+    Rcpp::traits::input_parameter< int >::type q(qSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type alpha(alphaSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type beta(betaSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type g(gSEXP);
+    Rcpp::traits::input_parameter< double >::type gn(gnSEXP);
+    Rcpp::traits::input_parameter< double >::type phi2(phi2SEXP);
+    Rcpp::traits::input_parameter< double >::type sigma2(sigma2SEXP);
+    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type Pgamma(PgammaSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type S(SSEXP);
+    rcpp_result_gen = Rcpp::wrap(EMVCR(y, X, C, W, r, rs, n, m, nt, ns, p, q, alpha, beta, g, gn, phi2, sigma2, theta, Pgamma, S));
+    return rcpp_result_gen;
+END_RCPP
+}
+// EMVCQR
+Rcpp::List EMVCQR(arma::vec& y, arma::mat& X, arma::mat& C, arma::mat& W, arma::mat& r, arma::mat& rs, int n, int m, arma::vec nt, int ns, int p, int q, double quant, arma::vec alpha, arma::vec beta, arma::vec g, double gn, double phi2, double sigma, double theta, arma::vec Pgamma, arma::vec S, double ep1, double ep22, arma::vec vn, arma::vec vp);
+RcppExport SEXP _emBayes_EMVCQR(SEXP ySEXP, SEXP XSEXP, SEXP CSEXP, SEXP WSEXP, SEXP rSEXP, SEXP rsSEXP, SEXP nSEXP, SEXP mSEXP, SEXP ntSEXP, SEXP nsSEXP, SEXP pSEXP, SEXP qSEXP, SEXP quantSEXP, SEXP alphaSEXP, SEXP betaSEXP, SEXP gSEXP, SEXP gnSEXP, SEXP phi2SEXP, SEXP sigmaSEXP, SEXP thetaSEXP, SEXP PgammaSEXP, SEXP SSEXP, SEXP ep1SEXP, SEXP ep22SEXP, SEXP vnSEXP, SEXP vpSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec& >::type y(ySEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type C(CSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type W(WSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type r(rSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type rs(rsSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< int >::type m(mSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type nt(ntSEXP);
+    Rcpp::traits::input_parameter< int >::type ns(nsSEXP);
+    Rcpp::traits::input_parameter< int >::type p(pSEXP);
+    Rcpp::traits::input_parameter< int >::type q(qSEXP);
+    Rcpp::traits::input_parameter< double >::type quant(quantSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type alpha(alphaSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type beta(betaSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type g(gSEXP);
+    Rcpp::traits::input_parameter< double >::type gn(gnSEXP);
+    Rcpp::traits::input_parameter< double >::type phi2(phi2SEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type Pgamma(PgammaSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type S(SSEXP);
+    Rcpp::traits::input_parameter< double >::type ep1(ep1SEXP);
+    Rcpp::traits::input_parameter< double >::type ep22(ep22SEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type vn(vnSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type vp(vpSEXP);
+    rcpp_result_gen = Rcpp::wrap(EMVCQR(y, X, C, W, r, rs, n, m, nt, ns, p, q, quant, alpha, beta, g, gn, phi2, sigma, theta, Pgamma, S, ep1, ep22, vn, vp));
+    return rcpp_result_gen;
+END_RCPP
+}
 // logR
 Rcpp::List logR(arma::vec& y, arma::mat& X, arma::mat& C, arma::vec alpha, arma::vec beta, double sigma2, double theta, double s0, double s1);
 RcppExport SEXP _emBayes_logR(SEXP ySEXP, SEXP XSEXP, SEXP CSEXP, SEXP alphaSEXP, SEXP betaSEXP, SEXP sigma2SEXP, SEXP thetaSEXP, SEXP s0SEXP, SEXP s1SEXP) {
@@ -102,6 +169,64 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// logVCR
+Rcpp::List logVCR(arma::vec& y, arma::mat& X, arma::mat& C, arma::mat& W, arma::mat& r, arma::mat& rs, int n, int m, int ns, arma::vec alpha, arma::vec beta, arma::vec g, double gn, double phi2, double sigma2, double theta, double s0, double s1);
+RcppExport SEXP _emBayes_logVCR(SEXP ySEXP, SEXP XSEXP, SEXP CSEXP, SEXP WSEXP, SEXP rSEXP, SEXP rsSEXP, SEXP nSEXP, SEXP mSEXP, SEXP nsSEXP, SEXP alphaSEXP, SEXP betaSEXP, SEXP gSEXP, SEXP gnSEXP, SEXP phi2SEXP, SEXP sigma2SEXP, SEXP thetaSEXP, SEXP s0SEXP, SEXP s1SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec& >::type y(ySEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type C(CSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type W(WSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type r(rSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type rs(rsSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< int >::type m(mSEXP);
+    Rcpp::traits::input_parameter< int >::type ns(nsSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type alpha(alphaSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type beta(betaSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type g(gSEXP);
+    Rcpp::traits::input_parameter< double >::type gn(gnSEXP);
+    Rcpp::traits::input_parameter< double >::type phi2(phi2SEXP);
+    Rcpp::traits::input_parameter< double >::type sigma2(sigma2SEXP);
+    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< double >::type s0(s0SEXP);
+    Rcpp::traits::input_parameter< double >::type s1(s1SEXP);
+    rcpp_result_gen = Rcpp::wrap(logVCR(y, X, C, W, r, rs, n, m, ns, alpha, beta, g, gn, phi2, sigma2, theta, s0, s1));
+    return rcpp_result_gen;
+END_RCPP
+}
+// logVCQR
+Rcpp::List logVCQR(arma::vec& y, arma::mat& X, arma::mat& C, arma::mat& W, arma::mat& r, arma::mat& rs, int n, int m, int ns, arma::vec alpha, arma::vec beta, arma::vec g, double gn, double phi2, double sigma, double theta, double s0, double s1, double ep1, double ep22);
+RcppExport SEXP _emBayes_logVCQR(SEXP ySEXP, SEXP XSEXP, SEXP CSEXP, SEXP WSEXP, SEXP rSEXP, SEXP rsSEXP, SEXP nSEXP, SEXP mSEXP, SEXP nsSEXP, SEXP alphaSEXP, SEXP betaSEXP, SEXP gSEXP, SEXP gnSEXP, SEXP phi2SEXP, SEXP sigmaSEXP, SEXP thetaSEXP, SEXP s0SEXP, SEXP s1SEXP, SEXP ep1SEXP, SEXP ep22SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec& >::type y(ySEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type C(CSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type W(WSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type r(rSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type rs(rsSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< int >::type m(mSEXP);
+    Rcpp::traits::input_parameter< int >::type ns(nsSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type alpha(alphaSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type beta(betaSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type g(gSEXP);
+    Rcpp::traits::input_parameter< double >::type gn(gnSEXP);
+    Rcpp::traits::input_parameter< double >::type phi2(phi2SEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< double >::type s0(s0SEXP);
+    Rcpp::traits::input_parameter< double >::type s1(s1SEXP);
+    Rcpp::traits::input_parameter< double >::type ep1(ep1SEXP);
+    Rcpp::traits::input_parameter< double >::type ep22(ep22SEXP);
+    rcpp_result_gen = Rcpp::wrap(logVCQR(y, X, C, W, r, rs, n, m, ns, alpha, beta, g, gn, phi2, sigma, theta, s0, s1, ep1, ep22));
+    return rcpp_result_gen;
+END_RCPP
+}
 // Soft
 double Soft(double z, double lambda);
 RcppExport SEXP _emBayes_Soft(SEXP zSEXP, SEXP lambdaSEXP) {
@@ -118,8 +243,12 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_emBayes_EMR", (DL_FUNC) &_emBayes_EMR, 12},
     {"_emBayes_EMQR", (DL_FUNC) &_emBayes_EMQR, 19},
+    {"_emBayes_EMVCR", (DL_FUNC) &_emBayes_EMVCR, 21},
+    {"_emBayes_EMVCQR", (DL_FUNC) &_emBayes_EMVCQR, 26},
     {"_emBayes_logR", (DL_FUNC) &_emBayes_logR, 9},
     {"_emBayes_logQR", (DL_FUNC) &_emBayes_logQR, 11},
+    {"_emBayes_logVCR", (DL_FUNC) &_emBayes_logVCR, 18},
+    {"_emBayes_logVCQR", (DL_FUNC) &_emBayes_logVCQR, 20},
     {"_emBayes_Soft", (DL_FUNC) &_emBayes_Soft, 2},
     {NULL, NULL, 0}
 };
